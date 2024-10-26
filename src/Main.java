@@ -1,7 +1,9 @@
-import java.time.LocalDate;
-
+import br.Conteudo;
 import br.Curso;
 import br.Mentoria;
+import br.com.dio.desafio.Bootcamp;
+import br.com.dio.desafio.Dev;
+import java.time.LocalDate;
 
 public class Main {
 
@@ -24,14 +26,60 @@ public static void main(String[] args) {
     Conteudo conteudo = new Curso();
 
     // criando novos objetos MENTORIA 
-    Mentoria mentoria1 = new Mentoria();
+    Mentoria mentoria = new Mentoria();
 
-    mentoria1.setTitulo("mentoria de java");
-    mentoria1.setDescricao("descricao mentoria java");
-    mentoria1.setData(LocalDate.now());
+    mentoria.setTitulo("mentoria de java");
+    mentoria.setDescricao("descricao mentoria java");
+    mentoria.setData(LocalDate.now());
 
     
-    System.out.println(curso1);
+   /* System.out.println(curso1);
     System.out.println(curso2);
+    System.out.println(mentoria); */
+
+    Bootcamp bootcamp = new Bootcamp();
+    bootcamp.setNome("Bootcamp Java Developer");
+    bootcamp.setDescricao("Descrição Bootcamp Java Developer");
+    bootcamp.getConteudos().add(curso1);
+    bootcamp.getConteudos().add(curso2);
+    bootcamp.getConteudos().add(mentoria);
+
+  //Adicionando DEVS e inscrevendo em bootcamps, progredindo e exibindo inscricoes, conclusoes e xp calculados de cada dev.
+    Dev devYuri = new Dev();
+    devYuri.setNome("Yuri");
+    devYuri.inscreverBootcamp(bootcamp);
+    System.out.println("Conteúdos Inscritos" + devYuri.getConteudosInscritos());
+
+    devYuri.progredir();
+    System.out.println("------------");
+
+
+    System.out.println("Conteúdos Inscritos yuri:" + devYuri.getConteudosInscritos());
+    System.out.println("Conteudos concluidos yuri:" + devYuri.getConteudosConcluidos());
+
+    System.out.println("------------");
+
+    System.out.println("XP atual yuri:" + devYuri.calcularTotalXp());
+
+    Dev devMaria = new Dev();
+    devMaria.setNome("Maria");
+    devMaria.inscreverBootcamp(bootcamp);
+
+    devMaria.progredir();
+    devMaria.progredir();
+    devMaria.progredir();
+
+    System.out.println("------------");
+
+    System.out.println("Conteúdos Inscritos maria" + devMaria.getConteudosInscritos());
+    System.out.println("Conteudos concluidos maria:" + devMaria.getConteudosConcluidos());
+
+    System.out.println("------------");
+
+    System.out.println("XP atual maria:" + devMaria.calcularTotalXp());
+
+
+
+
 }
 }
